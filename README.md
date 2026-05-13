@@ -17,3 +17,8 @@ Dataset: IMDb Top 1000 — Kaggle
 AI-assisted debugging and query review: Claude (Anthropic)
 
 Status: In progress — queries and findings updated as new SQL skills are developed
+
+Key Findings So Far
+Ratings vs. Box Office Disconnect
+Drama dominates by volume (724 of 1000 films) and has the highest average IMDb rating (7.96), yet Action films earn more than double at the box office ($141M avg gross vs Drama's lower figure). Comedy and Thriller also outgross higher-rated genres commercially.
+This suggests a measurable gap between critical/audience acclaim and commercial performance — audiences and studios prioritize different things.
