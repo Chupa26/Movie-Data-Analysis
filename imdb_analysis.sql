@@ -72,3 +72,38 @@ SELECT 'Biography',
 	ROUND(AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000), 2)
 FROM imdb_top_1000.csv WHERE Genre LIKE '%Biography%'
 ORDER BY avg_gross_millions DESC;
+
+--Comparing Gross to Director Relationship in Action Genre
+
+SELECT Director,
+	COUNT(*) AS movie_count,
+	ROUND(AVG(IMDB_Rating), 2) AS avg_rating,
+	ROUND(AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000), 2) AS avg_gross_millions
+FROM imdb_top_1000.csv WHERE Genre LIKE '%Action%'
+GROUP BY Director
+ORDER BY avg_gross_millions DESC
+LIMIT 10;
+
+--Does start power matter or franchise weight in Action
+
+SELECT Star1,
+	COUNT(*) AS movie_count,
+	ROUND(AVG(IMDB_Rating), 2) AS avg_rating,
+	ROUND(AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000), 2) AS avg_gross_millions
+FROM imdb_top_1000.csv WHERE Genre LIKE '%Action%'
+GROUP BY Star1
+ORDER BY avg_gross_millions DESC
+LIMIT 10;
+
+--Remove Action filter
+
+SELECT Star1,
+	COUNT(*) AS movie_count,
+	ROUND(AVG(IMDB_Rating), 2) AS avg_rating,
+	ROUND(AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000), 2) AS avg_gross_millions
+FROM imdb_top_1000.csv
+GROUP BY Star1
+ORDER BY avg_gross_millions DESC
+LIMIT 10;
+
+
