@@ -31,3 +31,44 @@ UNION ALL
 SELECT 'Biography', ROUND(AVG(IMDB_Rating), 2), COUNT(*)
 FROM imdb_top_1000 WHERE Genre LIKE '%Biography%'
 ORDER BY avg_rating DESC;
+
+
+--Query 3: Average IMDB Rating by Individual Genre and by Avg Gross per Genre
+--Use CAST and REPLACE to convert number text to numerics
+
+SELECT 'Drama' AS genre,
+	ROUND(AVG(IMDB_Rating), 2) AS avg_rating,
+    COUNT(*) AS movie_count,
+	ROUND(AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000), 2) AS avg_gross_millions 
+FROM imdb_top_1000.csv WHERE Genre LIKE '%Drama%'
+UNION ALL
+SELECT 'Action', 
+	ROUND(AVG(IMDB_Rating), 2),
+    COUNT(*),
+	ROUND(AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000), 2)
+FROM imdb_top_1000.csv WHERE Genre LIKE '%Action%'
+UNION ALL
+SELECT 'Comedy', 
+	ROUND(AVG(IMDB_Rating), 2),
+    COUNT(*),
+	ROUND(AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000), 2)
+FROM imdb_top_1000.csv WHERE Genre LIKE '%Comedy%'
+UNION ALL
+SELECT 'Crime', 
+	ROUND(AVG(IMDB_Rating), 2),
+    COUNT(*),
+	ROUND(AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000), 2)
+FROM imdb_top_1000.csv WHERE Genre LIKE '%Crime%'
+UNION ALL
+SELECT 'Thriller', 
+	ROUND(AVG(IMDB_Rating), 2),
+    COUNT(*),
+	ROUND(AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000), 2)
+FROM imdb_top_1000.csv WHERE Genre LIKE '%Thriller%'
+UNION ALL
+SELECT 'Biography', 
+	ROUND(AVG(IMDB_Rating), 2),
+    COUNT(*),
+	ROUND(AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000), 2)
+FROM imdb_top_1000.csv WHERE Genre LIKE '%Biography%'
+ORDER BY avg_gross_millions DESC;
