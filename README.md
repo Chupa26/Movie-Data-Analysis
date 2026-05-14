@@ -34,3 +34,12 @@ LIKE with UNION ALL for isolating individual genres from multi-value fields
 Aggregations: AVG, COUNT, ROUND
 GROUP BY, ORDER BY, LIMIT
 Independently debugged column alias errors and table reference issues
+
+Visualization Attempt
+
+Dataset Imported Into Power BI
+Genres were not split
+Averages of Rating and Gross were looked at by natively grouped genres
+
+Analysis
+The dataset suggests that critical and audience acclaim, as measured by IMDb rating, shows little correlation with box office performance at the genre level. Genres with the highest average ratings do not consistently produce the highest grossing films, implying that factors beyond perceived quality — franchise brand, marketing, mass appeal — drive commercial success.
