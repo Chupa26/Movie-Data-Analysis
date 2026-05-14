@@ -39,7 +39,12 @@ Visualization Attempt
 
 Dataset Imported Into Power BI
 Genres were not split
-Averages of Rating and Gross were looked at by natively grouped genres
+Averages of Rating and Gross were looked at by natively grouped genres using horizontal bar charts
 
 Analysis
 The dataset suggests that critical and audience acclaim, as measured by IMDb rating, shows little correlation with box office performance at the genre level. Genres with the highest average ratings do not consistently produce the highest grossing films, implying that factors beyond perceived quality — franchise brand, marketing, mass appeal — drive commercial success.
+
+Further comparative analysis to confirm thesis using scatter plot
+
+Individual Film Analysis — Scatter Plot
+A scatter plot of IMDb Rating vs. Gross revenue at the individual film level confirms the genre-level finding. The Shawshank Redemption, the highest rated film in the dataset at 9.3, is among the lowest grossing. Star Wars Episode 7, rated 7.5, earned nearly $900M. The data shows no clear upward trend between rating and gross revenue, reinforcing that perceived quality does not drive commercial success — franchise brand does.
