@@ -151,4 +151,20 @@ SELECT *
 FROM ranked
 WHERE rank <= 3 AND gross_cleaned IS NOT NULL AND (Genre LIKE '%Action%' OR Genre LIKE '%Drama%' OR Genre LIKE '%Comedy%' OR Genre LIKE '%Sci-Fi%' OR Genre LIKE '%Romance%');
 
+--Top Grossing Film for Each Year and its Gross
+
+WITH ranked AS (SELECT
+	Released_Year,
+	Series_Title,
+	CAST(REPLACE(Gross, ',', '') AS NUMERIC) AS gross_cleaned,
+	RANK() OVER(PARTITION BY Released_Year ORDER BY gross_cleaned DESC) AS rank
+	FROM imdb_top_1000.csv)
+
+SELECT *
+FROM ranked
+WHERE rank = 1
+ORDER BY Released_Year;
+
+
+
 
