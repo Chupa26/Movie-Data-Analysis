@@ -138,4 +138,17 @@ WHERE CAST(REPLACE(Gross, ',', '') AS NUMERIC) >
     (SELECT AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC)) 
      FROM imdb_top_1000.csv);
 
+--Rank Films by Gross in Desired Genres Showing Top 3 Per Genre
+
+WITH ranked AS (
+	SELECT Series_Title,
+	Genre,
+	CAST(REPLACE(Gross, ',', '') AS NUMERIC) AS gross_cleaned,
+	RANK() OVER(PARTITION BY Genre ORDER BY gross_cleaned DESC) AS rank
+	FROM imdb_top_1000.csv)
+
+SELECT *
+FROM ranked
+WHERE rank <= 3 AND gross_cleaned IS NOT NULL AND (Genre LIKE '%Action%' OR Genre LIKE '%Drama%' OR Genre LIKE '%Comedy%' OR Genre LIKE '%Sci-Fi%' OR Genre LIKE '%Romance%');
+
 
