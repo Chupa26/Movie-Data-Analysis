@@ -106,4 +106,36 @@ GROUP BY Star1
 ORDER BY avg_gross_millions DESC
 LIMIT 10;
 
+--Practicing Queries and Advanced Filtering
+--Top 10 Highest Grossing Films
+
+SELECT Series_Title,
+ROUND(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000) AS gross_millions
+FROM imdb_top_1000.csv
+ORDER BY Gross_millions DESC
+LIMIT 10;
+
+--Top 5 Directors By Avg Rating
+
+SELECT Director,
+ROUND(AVG(IMDB_Rating), 2) AS avg_rating,
+COUNT(Director) AS movie_count
+	FROM imdb_top_1000.csv
+GROUP BY Director
+HAVING COUNT(Director) >=5
+ORDER BY avg_rating DESC
+LIMIT 5;
+
+--Films Above Avg Gross
+
+SELECT 
+    Series_Title,
+    ROUND(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000, 2) AS gross_millions,
+    ROUND((SELECT AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC) / 1000000) 
+     FROM imdb_top_1000.csv), 2) AS avg_gross_millions
+FROM imdb_top_1000.csv
+WHERE CAST(REPLACE(Gross, ',', '') AS NUMERIC) > 
+    (SELECT AVG(CAST(REPLACE(Gross, ',', '') AS NUMERIC)) 
+     FROM imdb_top_1000.csv);
+
 
