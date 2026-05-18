@@ -61,3 +61,10 @@ Top 5 Directors by Average Rating (min. 5 films) — used GROUP BY, HAVING, and 
 Films Above Average Gross — introduced subqueries to calculate dataset average gross and filter against it. 239 of 1000 films beat the average, consistent with expected skew from franchise blockbuster outliers.
 
 
+Window Functions — Ranking Films Within Genres
+
+Applied window functions using a CTE to rank the top 3 grossing films within each genre combination. Used RANK() OVER (PARTITION BY Genre ORDER BY gross_cleaned DESC) to reset rankings within each genre group, wrapped in a CTE to allow filtering on the rank result afterward.
+Key concepts applied together in one query: CTE (WITH clause), window function with PARTITION BY, CAST/REPLACE for data cleaning, compound WHERE filtering with LIKE and OR, and null exclusion.
+Notable results: Star Wars Episode VII ranks 1st in Action/Adventure/Sci-Fi at $936M. Guardians of the Galaxy Vol. 2 tops Action/Adventure/Comedy at $389M. Results continue to reinforce franchise brand as the primary driver of box office performance.
+
+
