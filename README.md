@@ -68,3 +68,9 @@ Key concepts applied together in one query: CTE (WITH clause), window function w
 Notable results: Star Wars Episode VII ranks 1st in Action/Adventure/Sci-Fi at $936M. Guardians of the Galaxy Vol. 2 tops Action/Adventure/Comedy at $389M. Results continue to reinforce franchise brand as the primary driver of box office performance.
 
 
+Actor Appearances and Ratings — All Star Columns Combined
+
+Used a UNION ALL across all four actor columns (Star1–Star4) to create a complete actor appearance list, then grouped by actor to count total appearances and average IMDb rating. Applied DENSE_RANK to rank actors by movie count without skipping rank numbers on ties.
+Key concepts applied: multi-source UNION ALL, CTE, DENSE_RANK window function, GROUP BY aggregation, ROUND.
+Notable results: Robert De Niro leads with 17 appearances averaging 8.12. Leonardo DiCaprio ranks 5th by volume but has the highest average rating in the top 10 at 8.13 — suggesting consistent involvement in high quality films. James Stewart appearing at rank 6 highlights that classic era actors remain well represented in the dataset. Results contrast with earlier Star1-only queries where franchise leads dominated — combining all four columns shifts the picture toward consistently working actors across decades.
+Limitation noted: Star1 represents top billing; Stars 2–4 include supporting roles. Appearance count reflects presence in the dataset regardless of billing position.
