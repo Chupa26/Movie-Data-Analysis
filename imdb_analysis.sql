@@ -165,6 +165,28 @@ FROM ranked
 WHERE rank = 1
 ORDER BY Released_Year;
 
+--Actors with the Most Films in Dataset Ranked and Their Avg IMDB Rating
 
+WITH actor_union AS (
+    SELECT Star1 AS actor, IMDB_Rating
+    FROM imdb_top_1000.csv
+    UNION ALL
+    SELECT Star2 AS actor, IMDB_Rating
+    FROM imdb_top_1000.csv
+    UNION ALL
+    SELECT Star3 AS actor, IMDB_Rating
+    FROM imdb_top_1000.csv
+    UNION ALL
+    SELECT Star4 AS actor, IMDB_Rating
+    FROM imdb_top_1000.csv
+)
+SELECT 
+    actor,
+    COUNT(*) AS movie_count,
+	ROUND(AVG(IMDB_Rating), 2) AS avg_rating,
+    DENSE_RANK() OVER(ORDER BY COUNT(*) DESC) AS rank
+FROM actor_union
+GROUP BY actor
+ORDER BY movie_count DESC;
 
 
