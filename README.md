@@ -48,3 +48,16 @@ Further comparative analysis to confirm thesis using scatter plot
 
 Individual Film Analysis — Scatter Plot
 A scatter plot of IMDb Rating vs. Gross revenue at the individual film level confirms the genre-level finding. The Shawshank Redemption, the highest rated film in the dataset at 9.3, is among the lowest grossing. Star Wars Episode 7, rated 7.5, earned nearly $900M. The data shows no clear upward trend between rating and gross revenue, reinforcing that perceived quality does not drive commercial success — franchise brand does.
+
+
+SQL Practice — Subqueries & Advanced Filtering
+
+Practiced three additional queries with increasing complexity using a plan-first approach before writing code:
+
+Top 10 Highest Grossing Films — identified text-to-numeric conversion as a prerequisite before sorting, correcting an initial alphabetic sort error independently.
+
+Top 5 Directors by Average Rating (min. 5 films) — used GROUP BY, HAVING, and ROUND to filter on aggregated results. Christopher Nolan ranked first at 8.46 across 8 films. Notably Charles Chaplin and Sergio Leone appeared, suggesting timeless critical regard for classic era directors.
+
+Films Above Average Gross — introduced subqueries to calculate dataset average gross and filter against it. 239 of 1000 films beat the average, consistent with expected skew from franchise blockbuster outliers.
+
+
